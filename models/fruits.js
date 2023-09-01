@@ -13,6 +13,16 @@ const fruits = [
         name:'banana',
         color: 'yellow',
         readyToEat: true
+    },
+    {
+        name:'pineapple',
+        color: 'yellow',
+        readyToEat: true
+    },
+    {
+        name:'orange',
+        color: 'orange',
+        readyToEat: true
     }
 ];
 //EXPORT IN COMMON JS
