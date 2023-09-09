@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const Fruit = require("./models/fruit");
-const vegetables = require("./models/vegetables");
+const Vegetable = require("./models/vegetable");
 const jsxViewEngine = require("jsx-view-engine");
 const mongoose = require("mongoose");
 
@@ -75,16 +75,42 @@ app.get("/fruits/:id", async (req, res) => {
 });
 
 //Index route Veggies
-app.get("/vegetables", (req, res) => {
-  res.render("vegetables/Index", { vegetables });
+app.get("/vegetables", async (req, res) => {
+  try {
+    const foundVegetables = await Vegetable.find({});
+    res.status(200).render("vegetables/Index", { vegetables: foundVegetables });
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+//New Route Veggies
+app.get("/vegetables/new", (req, res) => {
+  res.render("vegetables/New");
+});
+
+//Create Route Veggies
+app.post("/vegetables", async (req, res) => {
+  try {
+    req.body.readyToEat = req.body.readyToEat === "on";
+    const createdVegetable = await Vegetable.create(req.body);
+    res.status(201).redirect("/vegetables");
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 //Show route Veggies
-app.get("/vegetables/:id", (req, res) => {
+app.get("/vegetables/:id", async (req, res) => {
   //second param of render method MUST be an object
-  res.render("vegetables/Show", {
-    vegetable: vegetables[req.params.id],
-  });
+  try {
+    const foundVegetable = await Vegetable.findById(req.params.id);
+    res.render("vegetables/Show", {
+      vegetable: foundVegetable,
+    });
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 app.listen(PORT, () => {
