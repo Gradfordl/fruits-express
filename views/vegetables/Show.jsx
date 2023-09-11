@@ -1,14 +1,19 @@
 const React = require('react');
 
+const style = {
+  width: "50%",
+  padding: "10px"
+};
+
 class Show extends React.Component {
    render () {
     const { name, color, readyToEat, img } = this.props.vegetable
 
     return (
-      <div>
+      <div style={style} >
         <h1>Show Page</h1>
         <div>
-          <img src={img}/>
+          <img src={img} width="250px" height="auto" />
           </div>
         
         The {name} is {color}.

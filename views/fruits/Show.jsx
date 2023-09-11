@@ -1,14 +1,19 @@
 const React = require('react');
+const DefaultLayout = require("../layout/Default");
+
+const style = {
+  width: "50%",
+  padding: "10px"
+};
 
 class Show extends React.Component {
    render () {
     const { name, color, readyToEat, img } = this.props.fruit
 
     return (
-      <div>
-        <h1>Show Page</h1>
+      <DefaultLayout title="Show Page">
         <div>
-          <img src={img}/>
+          <img src={img} width="250px" height="auto" />
           </div>
         
         The {name} is {color}.
@@ -18,7 +23,7 @@ class Show extends React.Component {
           
     <a href="/fruits">Go Back</a>
 </nav>
-      </div>
+      </DefaultLayout>
      );
     }
  }
