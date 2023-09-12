@@ -198,6 +198,12 @@ app.get("/vegetables/:id", async (req, res) => {
   }
 });
 
+//catches all undefined routes and sends to fruits index page
+//this is also where a 404 would go
+app.get("*", (req, res) => {
+  res.redirect("/fruits");
+})
+
 app.listen(PORT, () => {
   // console.log(`We liiiiive on port ${PORT} baby`);
 });
