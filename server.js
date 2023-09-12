@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 mongoose.connection.once("open", () => {
-  console.log("Bingo bongo connected to Mongo");
+  // console.log("Bingo bongo connected to Mongo");
 });
 //////////////////////////////////////////
 
@@ -199,5 +199,5 @@ app.get("/vegetables/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`We liiiiive on port ${PORT} baby`);
+  // console.log(`We liiiiive on port ${PORT} baby`);
 });

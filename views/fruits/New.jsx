@@ -1,10 +1,10 @@
 const React = require("react");
+const DefaultLayout = require("../layout/Default");
 
 class New extends React.Component {
   render() {
     return (
-      <div>
-        <h1>New Fruit Page:</h1>
+      <DefaultLayout title="New Fruit Page" >
         <form action="/fruits" method="POST">
           Name: <input type="text" name="name" />
           <br />
@@ -20,7 +20,7 @@ class New extends React.Component {
     <a href="/fruits">Go Back...</a>
 </nav>
         </form>
-      </div>
+      </DefaultLayout>
     );
   }
 }
